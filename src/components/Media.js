@@ -1,22 +1,22 @@
-// import {position, description, images} from '../data/data'
-
-const Media = ({pos, des, src, colors}) => {
+const Media = ({data}) => {
   return (
-    <div>
-      {pos.map((pos, idx) => (
-        <div className="media__container" key={'div_' + idx}>
-          <div className="media__border" style={{backgroundColor: colors[idx]}}></div>
-          <div className="media__inner-container">
-            <h2 className="media__heading" key={'pos_' + idx}>
-              {pos}
-            </h2>
-            <p className="media__text" key={'des_' + idx}>
-              {des[idx]}
-            </p>
-            <img className="media__image" key={'img_' + idx} src={src[idx]} alt={pos[idx]} />
+    <div className="media__wrapper">
+      {data.map(date => {
+        return (
+          <div className="media__container" key={date.id} id={'media__container--' + date.id}>
+            <div className="media__border" style={{backgroundColor: date.color}} key={date.id}></div>
+            <div className="media__inner-container" key={date.id}>
+              <h2 className="media__heading" key={date.id}>
+                {date.position}
+              </h2>
+              <p className="media__text" key={date.id}>
+                {date.description}
+              </p>
+              <img className="media__image" src={date.src} alt="#" />
+            </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
     </div>
   )
 }
